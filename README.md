@@ -8,7 +8,7 @@
 
 ```yaml
 - name: sync-gitee-mirror
-  uses: abersheeran/sync-gitee-mirror@v1-alpha
+  uses: abersheeran/sync-gitee-mirror@v1-beta
   with:
     repository: abersheeran/sync-gitee-mirror
     username: ${{ secrets.USERNAME }}
