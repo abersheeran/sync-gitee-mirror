@@ -11,7 +11,7 @@ inputs:
     description: 'Gitee 密码，用于登录。'
     required: true
   token:
-    description: 'GIthub 令牌, 用于获取。'
+    description: 'GitHub 令牌，用于私有仓库的拉取。'
     default: ${{ github.token }}
 runs:
   using: composite
