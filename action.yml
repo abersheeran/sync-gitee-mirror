@@ -10,12 +10,16 @@ inputs:
   password:
     description: 'Gitee 密码，用于登录。'
     required: true
+  token:
+    description: 'GitHub 令牌，用于私有仓库的拉取。'
+    default: ${{ github.token }}
 runs:
-  using: "composite"
+  using: composite
   steps:
     - run: |
         git init
         git remote add origin https://github.com/${GITHUB_REPOSITORY}.git
+        git config http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n "x-access-token:${{ inputs.token }}" | base64)"
         git fetch --all
         for branch in `git branch -a | grep remotes | grep -v HEAD`; do
           git branch --track ${branch##*/} $branch
